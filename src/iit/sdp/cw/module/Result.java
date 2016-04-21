@@ -1,9 +1,11 @@
 package iit.sdp.cw.module;
 
+import java.io.Serializable;
+
 /**
  * Created by Anuradha on 4/21/2016.
  */
-public class Result {
+public class Result implements Serializable{
     private String level;
     private String module;
     private int result;
@@ -38,5 +40,15 @@ public class Result {
 
     public int getAttempt() {
         return attempt;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+               "level='" + level + '\'' +
+               ", module='" + module + '\'' +
+               ", result=" + result +
+               ", attempt=" + attempt +
+               '}';
     }
 }
