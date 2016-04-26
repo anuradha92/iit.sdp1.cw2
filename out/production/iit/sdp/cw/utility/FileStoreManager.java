@@ -2,7 +2,6 @@ package iit.sdp.cw.utility;
 
 import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,8 +16,7 @@ public class FileStoreManager {
         String filePath = Constans.FILE_STORE_PATH + File.separator + entityName ;
         File entityDir = new File(filePath);
         if(!entityDir.exists()) {
-            boolean mkdir = entityDir.mkdir();
-            System.out.println("Directory for student is created : " + mkdir);
+            entityDir.mkdir();
         }
     }
 
@@ -33,7 +31,7 @@ public class FileStoreManager {
             fos = new FileOutputStream(filePath);
             oos = new ObjectOutputStream(fos);
             oos.writeObject(object);
-
+            oos.close();
         } catch (IOException e) {
             e.printStackTrace();
         }finally {
@@ -45,34 +43,9 @@ public class FileStoreManager {
         }
 
     }
-    public static Object readFromFile(String relativeFilePath){
-        String filePath = Constans.FILE_STORE_PATH + File.separator + relativeFilePath ;
-        File file = new File(filePath);
-        if(!file.exists()){
-            return null ;
-        }
-        FileInputStream fis = null ;
-        ObjectInputStream ois = null ;
-        Object object = null ;
-        try {
-            fis = new FileInputStream(filePath);
-            ois = new ObjectInputStream(fis);
-
-            object = ois.readObject();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                ois.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return object ;
+    public void readToFile(String filePath){
+        return;
     }
-
+    
 
 }

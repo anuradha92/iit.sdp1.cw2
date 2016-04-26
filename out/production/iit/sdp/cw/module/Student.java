@@ -1,8 +1,9 @@
 package iit.sdp.cw.module;
 
-import java.io.Serializable;
-
-public class Student implements Serializable{
+/**
+ * Created by Anuradha on 4/21/2016.
+ */
+public class Student {
     private String firstName;
     private String lastName;
     private String regNo;

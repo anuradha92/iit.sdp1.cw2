@@ -1,8 +1,7 @@
 package test.iit.sdp.cw.utility;
 
-import iit.sdp.cw.module.Result;
-import iit.sdp.cw.module.Student;
-import iit.sdp.cw.utility.FileStoreManager;
+import iit.sdp.cw.module.Level;
+import iit.sdp.cw.util.FileStoreManager;
 import junit.framework.TestCase;
 
 /**
@@ -22,13 +21,13 @@ public class FileStoreManagerTest extends TestCase {
         student.setRegNo("100000");
         FileStoreManager.writToFile("Harsha/profile",student);*/
         FileStoreManager.createEntity("0001");
-        Result result = new Result();
+        Level result = new Level();
         result.setLevel("4");
-        result.setModule("ABC2");
-        result.setResult(50);
-        result.setAttempt(1);
 
-        FileStoreManager.writToFile("0001/4-ABC2",result);
+        Level[] results = new Level[1];
+        results[0] = result ;
+
+        FileStoreManager.writToFile("0001/4-ABC2",results);
     }
 
     public void testReadFromFile() throws Exception {
@@ -36,7 +35,7 @@ public class FileStoreManagerTest extends TestCase {
         Student student = (Student)object ;
         System.out.print(student.getFirstName());*/
         Object object = FileStoreManager.readFromFile("0001/4-ABC2");
-        Result result = (Result)object ;
+        Level[] result = (Level[])object ;
         System.out.print(result);
     }
 }
